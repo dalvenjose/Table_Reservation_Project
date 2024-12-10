@@ -70,7 +70,7 @@ Installation
 Clone the repository:
 
 
-git clone https://github.com/dalvenjose/Table_Reservation_Website.git  
+git clone https://github.com/dalvenjose/Table_Reservation_Project.git  
 
 cd Table_Reservation_Website  
 
