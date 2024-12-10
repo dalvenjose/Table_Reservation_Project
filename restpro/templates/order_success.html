@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    body {
+        background-color: #f0f4f8; /* Light background for contrast */
+        color: #343a40; /* Dark text color */
+    }
+
+    .container {
+        padding: 20px; /* Padding around the container */
+    }
+
+    .success-card {
+        background-color: #ffffff; /* White background for the card */
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        padding: 30px; /* Padding inside the card */
+        margin-top: 50px; /* Space above the card */
+    }
+
+    h2 {
+        font-size: 2rem; /* Larger font size for the heading */
+        font-weight: bold; /* Bold font weight */
+        color: #28a745; /* Green color for success */
+    }
+
+    p {
+        font-size: 1.2rem; /* Slightly larger font size for the paragraph */
+        margin-top: 10px; /* Space above the paragraph */
+    }
+
+    .btn {
+        font-size: 1rem; /* Button font size */
+        padding: 10px 20px; /* Padding for the button */
+        border-radius: 5px; /* Rounded button corners */
+    }
+
+    .icon {
+        font-size: 50px; /* Size of the icon */
+        color: #28a745; /* Green color for the icon */
+        margin-bottom: 20px; /* Space below the icon */
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="success-card text-center">
+        <div class="icon">
+            <i class="fas fa-check-circle"></i> <!-- Font Awesome check icon -->
+        </div>
+        <h2>Order Successful!</h2>
+        <p>Thank you for your order. You will receive a confirmation email shortly.</p>
+        <div class="text-center">
+            <a href="{% url 'home' %}" class="btn btn-primary">Return to Home</a>
+        </div>
+    </div>
+</div>
+
+<!-- Include Font Awesome for icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+{% endblock %}

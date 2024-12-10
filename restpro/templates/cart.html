@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    body {
+        background-color: #ffffff; /* Set the body background to white */
+        color: #000; /* Set the text color to black for better contrast */
+    }
+
+    .card-product {
+        background-color: #ffffff; /* Light background for the card */
+        border: none; /* Remove border */
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Add shadow to the card */
+        transition: transform 0.2s; /* Smooth transition for hover effect */
+    }
+
+    .card-product:hover {
+        transform: scale(1.05); /* Scale up the card on hover */
+    }
+
+    .btn-danger {
+        background-color: #dc3545; /* Bootstrap danger color */
+        border: none; /* Remove border */
+        border-radius: 5px; /* Rounded corners */
+    }
+
+    .btn-danger:hover {
+        background-color: #c82333; /* Darker shade on hover */
+    }
+
+    .btn-success {
+        background-color: #198754; /* Bootstrap success color */
+        border: none; /* Remove border */
+        border-radius: 5px; /* Rounded corners */
+    }
+
+    .btn-success:hover {
+        background-color: #146c43; /* Darker shade on hover */
+    }
+
+    .container {
+        padding: 20px; /* Add padding to the container */
+    }
+
+    .text-center {
+        text-align: center; /* Center align text */
+    }
+
+    .price-container {
+        text-align: center; /* Center align the price */
+        margin-top: 10px; /* Add some space above the price */
+    }
+</style>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4"><br></h2>
+    <div class="g-4 row row-cols-lg-5 row-cols-md-3 row-cols-2" style="margin-left: 30px; margin-right: 30px;">
+        {% for item in cart_items %}
+        <div class="col">
+            <div class="card-product card">
+                <div class="card-body text-center">
+                    <figure class="text-center">
+                        <img src="{{ item.product.image.url }}" alt="{{ item.product.name }} image" class="mb-3 img-fluid" style="width: 100px; height: 100px; object-fit: cover;">
+                    </figure>
+                    <h5 class="card-title">{{ item.product.name }}</h5>
+                    <p class="card-text" style="color: red;">Quantity: {{ item.quantity }}</p>  <!-- Display quantity in red -->
+                    <div class="price-container">
+                        <span class="text-dark">Price: ${{ item.product.price }}</span>
+                    </div>
+                    <div class="card-product-action d-flex gap-1 justify-content-center mt-2">
+                        <form action="{% url 'remove_from_cart' item.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Remove</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-warning text-center" role="alert">
+                Your cart is empty!
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="text-center mt-4">
+        <a href="{% url 'checkout' %}" class="btn btn-success">Checkout</a>
+    </div>
+</div>
+{% endblock %}

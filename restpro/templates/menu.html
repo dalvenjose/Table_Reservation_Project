@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    body {
+        background-color: #ffffff; /* Set the body background to white */
+        color: #fff; /* Set the text color to white for better contrast */
+    }
+
+    .card-product {
+        background-color: #ffffff; /* Light background for the card */
+        border: none; /* Remove border */
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Add shadow to the card */
+        transition: transform 0.2s; /* Smooth transition for hover effect */
+    }
+
+    .card-product:hover {
+        transform: scale(1.05); /* Scale up the card on hover */
+    }
+
+    .text-small a {
+        color: #ccc; /* Lighter color for small text links */
+    }
+
+    .text-small a:hover {
+        color: #fff; /* Change color on hover */
+    }
+
+    .btn-primary {
+        background-color: #007bff; /* Bootstrap primary color */
+        border: none; /* Remove border */
+        border-radius: 5px; /* Rounded corners */
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3; /* Darker shade on hover */
+    }
+
+    .container {
+        padding: 20px; /* Add padding to the container */
+    }
+
+    .text-center {
+        text-align: center; /* Center align text */
+    }
+
+    .price-container {
+        text-align: center; /* Center align the price */
+        margin-top: 10px; /* Add some space above the price */
+    }
+</style>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4"><br></h2>
+    <div class="g-4 row row-cols-lg-5 row-cols-md-3 row-cols-2" style="margin-left: 30px; margin-right: 30px;">
+        {% for i in dict1 %}
+        <div class="col">
+            <div class="card-product card">
+                <div class="card-body text-center">
+                    <figure class="text-center">
+                        <img src="{{ i.image.url }}" alt="image" class="mb-3 img-fluid" style="width: 100px; height: 100px;">
+                    </figure>
+                    <div class="card-product-action d-flex gap-1 justify-content-center">
+                        <form action="{% url 'add_to_cart' i.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary">Add to Cart</button>
+                        </form>
+                    </div>
+                    <div class="text-small mb-1">
+                        <a class="text-decoration-none text-muted" href="#!"><small>{{ i.name }}</small></a>
+                    </div>
+                    <h2 class="fs-6">
+                        <a class="text-inherit text-decoration-none" href="/shop/{{ i.fruit_slug }}">{{ i.fruit_name }}</a>
+                    </h2>
+                    <div class="price-container">
+                        <span class="text-dark">${{ i.price }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

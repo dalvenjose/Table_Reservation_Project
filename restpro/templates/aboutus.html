@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}   
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000000; /* Set background to black */
+        }
+        .about-section {
+            background-color: #000000; /* Card background color changed to black */
+            color: #ffffff; /* Text color changed to white for readability */
+            padding: 50px 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.5); /* Shadow color changed to white for contrast */
+            max-width: 800px;
+            margin: 100px auto 20px; /* Increased top margin to 100px */
+            border-radius: 10px;
+        }
+        .about-section h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #ffffff; /* Header color changed to white */
+        }
+        .about-section p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="about-section">
+        <h1>About Us</h1>
+        <p>Welcome to <strong>KAZHICHO</strong>, where flavor meets passion!</p>
+        <p>At <strong>KAZHICHO</strong>, we believe that every meal tells a story. Our journey began with a simple mission: to create a space where food lovers can come together to savor exceptional dishes, share memorable moments, and experience the joy of culinary artistry.</p>
+        <p>Our menu is a celebration of fresh, locally sourced ingredients, infused with a touch of creativity and inspired by global flavors. From signature dishes crafted with care to classic favorites reimagined, every bite is designed to delight your taste buds and leave you craving more.</p>
+        <p>But it’s not just about the food. It’s about the experience. Our warm, inviting atmosphere and attentive service make <strong>KAZHICHO</strong> the perfect spot for intimate dinners, family gatherings, or celebrations with friends.</p>
+        <p>We’re more than a restaurant – we’re a community. Whether you’re stopping by for a quick bite or staying for a leisurely meal, we’re here to ensure every visit is unforgettable.</p>
+        <p>Thank you for letting us be a part of your story. Come dine with us and discover the magic of <strong>KAZHICHO</strong>!</p>
+    </div>
+</body>
+{% endblock %}

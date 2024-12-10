@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    body {
+        background-color: #f8f9fa; /* Light background for better contrast */
+        color: #343a40; /* Dark text color */
+    }
+
+    .container {
+        padding: 10px; /* Reduced padding */
+    }
+
+    .text-center {
+        text-align: center; /* Center align text */
+    }
+
+    .price-container {
+        text-align: center; /* Center align the price */
+        margin-top: 5px; /* Reduced space above the price */
+    }
+
+    .card {
+        border: none; /* Remove border */
+        border-radius: 8px; /* Slightly rounded corners */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        background-color: #ffffff; /* White background for the card */
+        max-width: 500px; /* Set a maximum width for the card */
+        margin: auto; /* Center the card */
+    }
+
+    .card-product {
+        border: none; /* Remove border from product card */
+        border-radius: 8px; /* Slightly rounded corners */
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); /* Add shadow to product card */
+        margin-bottom: 10px; /* Space between product cards */
+    }
+
+    h2, h4 {
+        font-size: 1.5rem; /* Smaller heading size */
+    }
+
+    h5 {
+        font-size: 1.2rem; /* Smaller subheading size */
+    }
+
+    .form-control {
+        font-size: 0.9rem; /* Smaller input font size */
+    }
+
+    .btn {
+        font-size: 0.9rem; /* Smaller button font size */
+    }
+
+    .confirmation {
+        margin-top: 20px; /* Space above confirmation section */
+        padding: 15px; /* Padding for confirmation section */
+        border-radius: 8px; /* Rounded corners */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow for confirmation */
+        background-color: #ffffff; /* White background for confirmation */
+    }
+</style>
+
+<div class="container mt-3">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="text-center mb-3">Checkout</h2>
+            <div class="g-4 row">
+                <div class="col-12">
+                    <h5>Your Cart Items:</h5>
+                    {% for item in cart_items %}
+                    <div class="card-product card mb-2">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">{{ item.product.name }}</h5>
+                            <p class="card-text">Quantity: {{ item.quantity }}</p>
+                            <div class="price-container">
+                                <span class="text-dark">Price: ${{ item.product.price }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="alert alert-warning text-center" role="alert">
+                        Your cart is empty!
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="col-12">
+                    <h5>Total Price: ${{ total_price }}</h5>
+                </div>
+            </div>
+
+            <h4 class="text-center mt-3">Enter Your Information</h4>
+            <form method="POST" class="mt-3">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <input type="text" class="form-control" id="address" name="address" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <button type="submit" class="btn btn-success mt-3">Place Order</button>
+ </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

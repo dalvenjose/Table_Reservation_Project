@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    /* Include the Kazhicho font */
+    @import url('https://fonts.googleapis.com/css2?family=Kazhicho&display=swap');
+
+    .background-image {
+        background-image: url('{% static "images/COVER.jpg" %}'); /* Update the path to your image */
+        background-size: cover; /* Cover the entire area */
+        background-position: center; /* Center the image */
+        height: 100vh; /* Full height of the viewport */
+        display: flex; /* Use flexbox for centering */
+        flex-direction: column; /* Stack items vertically */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        text-align: center; /* Center text */
+    }
+
+    .heading {
+        font-family: 'Kazhicho', sans-serif; /* Apply Kazhicho font */
+        font-size: 48px; /* Larger font size for the heading */
+        color: #fff; /* White text color */
+        margin-bottom: 10px; /* Space below the heading */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for better readability */
+    }
+
+    .description {
+        font-family: 'Kazhicho', sans-serif; /* Apply Kazhicho font */
+        font-size: 24px; /* Increased font size for the description */
+        color: #fff; /* White text color */
+        margin-bottom: 20px; /* Space below the description */
+        max-width: 600px; /* Limit the width of the description */
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Text shadow for better readability */
+    }
+
+    .menu-text {
+        margin-top: 20px; /* Space above the menu text */
+    }
+
+    .menu-text a {
+        font-family: 'Kazhicho', sans-serif; /* Apply Kazhicho font */
+        text-decoration: none; /* Remove underline from link */
+        color: #fff; /* White text color */
+        font-weight: bold; /* Bold text for the link */
+        padding: 10px 20px; /* Padding around the link */
+        border: 2px solid rgba(255, 255, 255, 0.8); /* Semi-transparent border */
+        border-radius: 5px; /* Rounded corners */
+        background-color: transparent; /* Transparent background */
+        transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Transition for hover effect */
+    }
+
+    .menu-text a:hover {
+        background-color: rgba(255, 255, 255, 0.3); /* Light background on hover */
+        color: #333; /* Dark text on hover */
+        border-color: #333; /* Dark border on hover */
+    }
+</style>
+
+<div class="background-image">
+    <div class="heading">Delicious Food Awaits!</div>
+    <div class="description">Explore our exquisite menu filled with a variety of mouth-watering dishes crafted to satisfy your cravings.</div>
+    <div class="menu-text">
+        <a href="{% url 'menu' %}">View Menu</a>
+    </div>
+</div>
+{% endblock %}

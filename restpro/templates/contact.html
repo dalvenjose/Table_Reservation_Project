@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact Information</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #000000; /* Set background to black */
+            color: #ffffff; /* Default text color to white for readability */
+        }
+        .container {
+            padding: 20px; /* Padding for the container */
+            margin-top: 50px; /* Space above the container */
+        }
+        .card {
+            background-color: #1a1a1a; /* Darker card background for contrast */
+            color: #ffffff; /* Text color inside the cards */
+            border-radius: 10px; /* Rounded corners for cards */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+            transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effect */
+        }
+        .card:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.3); /* Lighter shadow on hover for contrast */
+        }
+        h6 {
+            font-size: 1.5rem; /* Increase font size for headings */
+            font-weight: bold; /* Make headings bold */
+        }
+        p {
+            font-size: 1.1rem; /* Increase font size for paragraphs */
+            line-height: 1.5; /* Improve line height for readability */
+        }
+        .heading-color {
+            color: #007bff; /* Primary color for headings */
+        }
+        .text-primary-hover:hover {
+            color: #0056b3; /* Darker shade on hover */
+        }
+        .icon {
+            font-size: 2rem; /* Increase icon size */
+            color: #007bff; /* Icon color */
+        }
+        .mb-4 {
+            margin-bottom: 1.5rem; /* Space below the icon */
+        }
+        .register-button {
+            margin-top: 30px; /* Space above the button */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row row-cols-1 row-cols-lg-3 g-4 justify-content-center"> <!-- Center the cards -->
+            <!-- Address info -->
+            <div class="col">
+                <div class="card card-body border p-4">
+                    <!-- Icon -->
+                    <div class="mb-4 text-center"><i class="bi bi-geo-alt icon"></i></div>
+                    <!-- Title -->
+                    <h6 class="mb-4 text-center">Office Address</h6>
+                    <!-- Office item -->
+                    <div class="d-flex align-items-center mb-2">
+                        <span class="heading-color fw-semibold mb-0">US office:</span>
+                    </div>
+                    <address class="mb-0 text-center">1434 Main St, Anytown, USA 12345, Kakkanad, Kerala</address>
+                </div>
+            </div>
+
+            <!-- Email info -->
+            <div class="col">
+                <div class="card card-body border p-4">
+                    <!-- Icon -->
+                    <div class="mb-4 text-center"><i class="bi bi-envelope icon"></i></div>
+                    <!-- Title -->
+                    <h6 class="mb-3 text-center">Email us</h6>
+                    <p class="text-center">We're on top of things and aim to respond to all inquiries within 24 hours.</p>
+                    <a href="mailto:kazhicho@gmail.com" class="heading-color text-primary-hover text-decoration-underline mb-0 text-center d-block">kazhicho@gmail.com</a>
+                </div>
+            </div>
+
+            <!-- Contact info -->
+            <div class="col">
+                <div class="card card-body border p-4">
+                    <!-- Icon -->
+                    <div class="mb-4 text-center"><i class="bi bi-telephone icon"></i></div>
+                    <!-- Title -->
+                    <h6 class=" mb-3 text-center">Call us</h6>
+                    <p class="text-center">Let's work together towards a common goal - get in touch!</p>
+                    <a href="tel:+91162823060" class="heading-color text-primary-hover text-decoration-underline mb-0 text-center d-block">+91162823060</a>
+                </div>
+            </div>
+        </div> <!-- Row END -->
+
+        <!-- Register Button -->
+        <div class="text-center register-button">
+            <a href="{% url 'register' %}" class="btn btn-primary btn-lg">Register</a>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

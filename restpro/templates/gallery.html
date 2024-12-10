@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Fruktur&display=swap" rel="stylesheet">
+</head>
+<style>
+    /* Container for the gallery section */
+    #gallery {
+        padding: 80px 0; /* Increased padding to move the gallery further down */
+        background-color: #000; /* Set background color to black */
+        color: #fff; /* Set text color to white for contrast */
+    }
+
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Display 3 images in a row */
+        gap: 16px; /* Adjust the gap between items */
+    }
+
+    @media (min-width: 1200px) {
+        .gallery {
+            grid-template-columns: repeat(4, 1fr); /* Display 4 images in a row on larger screens */
+        }
+    }
+
+    .gallery-item {
+        overflow: hidden; /* Ensures that images do not overflow their container */
+        border-radius: 8px; /* Optional: adds rounded corners */
+        height: 300px; /* Set a fixed height for the gallery items */
+        position: relative; /* Positioning context for absolute children */
+        transition: transform 0.3s ease; /* Smooth transition for scaling effect */
+    }
+
+    .gallery-item img {
+        width: 100%; /* Makes the image responsive */
+        height: 100%; /* Makes the image fill the container */
+        object-fit: cover; /* Ensures the image covers the entire area without distortion */
+        display: block; /* Removes bottom space under images */
+        transition: opacity 0.3s ease; /* Smooth transition for opacity change */
+    }
+
+    .gallery-item:hover img {
+        opacity: 0.7; /* Change opacity on hover */
+        transform: scale(1.05); /* Slightly scale the image on hover */
+    }
+
+    .gallery-item::after {
+        content: ""; /* Create a pseudo-element for overlay */
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+        opacity: 0; /* Initially hidden */
+        transition: opacity 0.3s ease; /* Smooth transition for overlay */
+    }
+
+    .gallery-item:hover::after {
+        opacity: 1; /* Show overlay on hover */
+    }
+
+    .section-title {
+        text-align: center; /* Center the title and paragraph */
+        margin-bottom: 40px; /* Add space below the title section */
+    }
+
+    .section-title h2,
+    .section-title p {
+        color: #fff; /* Set text color to white for contrast */
+        font-family: 'Fruktur', cursive; /* Change font to Fruktur */
+    }
+
+    .section-title h2 {
+        font-size: 2.5em; /* Increase the size of the title */
+        margin-bottom: 10px; /* Add some space below the title */
+    }
+
+    .section-title p {
+        font-size: 1.2em; /* Increase the size of the paragraph text */
+        margin-bottom: 20px; /* Add some space below the paragraph */
+    }
+</style>
+
+<section id="gallery">
+    <div class="container aos-init aos-animate" data-aos="fade-up">
+        <div class="section-title">
+            <h2>Gallery</h2> <!-- Changed to French -->
+            <p>Some photos from Our Restaurant</p> <!-- Changed to French -->
+        </div>
+        <div class="gallery">
+            {% for photo in dict1 %}
+            <div class="gallery-item">
+                <img src="{{ photo.image.url }}" alt="{{ photo.description }}">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
